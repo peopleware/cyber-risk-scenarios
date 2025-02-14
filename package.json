@@ -15,9 +15,28 @@
     "privacy preservation",
     "risk assesment"
   ],
-  "author": "Jan_Dockx@peopleware.be",
+  "author": {
+    "name": "Jan Dockx",
+    "email": "Jan_Dockx@peopleware.be"
+  },
+  "contributors": [],
   "license": "CC-BY-SA-4.0",
+  "devDependencies": {
+    "depcheck": "^1.4.7",
+    "npm-check-updates": "^17.1.14",
+    "prettier": "^3.5.1"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "proseWrap": "always",
+    "endOfLine": "lf",
+    "arrowParens": "avoid",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
   "scripts": {
+    "status": "depcheck; ncu; npm audit --registry=https://registry.npmjs.org || exit 0",
     "test": "TODO"
   }
 }
