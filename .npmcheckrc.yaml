@@ -1,4 +1,0 @@
-depcheck:
-  # skip unused check, but still monitor for outdated versions
-  ignoreMatches:
-    - joi
