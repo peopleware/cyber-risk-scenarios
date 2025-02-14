@@ -1,0 +1,23 @@
+{
+  "name": "cyber-risk-scenarios",
+  "version": "0.0.1",
+  "description": "A registry of risk scenarios cyber systems might be exposed to.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peopleware/cyber-risk-scenarios.git"
+  },
+  "keywords": [
+    "cybersecurity",
+    "CIA",
+    "confidentiality",
+    "integrity",
+    "availability",
+    "privacy preservation",
+    "risk assesment"
+  ],
+  "author": "Jan_Dockx@peopleware.be",
+  "license": "CC-BY-SA-4.0",
+  "scripts": {
+    "test": "TODO"
+  }
+}
