@@ -24,7 +24,8 @@
   "devDependencies": {
     "depcheck": "^1.4.7",
     "npm-check-updates": "^17.1.14",
-    "prettier": "^3.5.1"
+    "prettier": "^3.5.1",
+    "retire": "^5.2.5"
   },
   "prettier": {
     "printWidth": 120,
@@ -36,7 +37,7 @@
     "trailingComma": "none"
   },
   "scripts": {
-    "status": "depcheck; ncu; npm audit --registry=https://registry.npmjs.org || exit 0",
+    "status": "depcheck; retire; ncu; npm audit --registry=https://registry.npmjs.org || exit 0",
     "test": "TODO"
   }
 }
