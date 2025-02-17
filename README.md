@@ -15,16 +15,20 @@ topical experts. At some time, a governance structure might become necessary.
 
 ## Development
 
+### Installation
+
 Execute
 
 > npm install
 
 to install development tools.
 
+After install, `.JSONSchemata/RiskScenarios.json` is used. You can tell your editor to use this JSON Schema when editing
+risk scenario files.
+
 ### Formatting
 
-This repository is set up for use in IntelliJ IDEAs. YAML and Markdown files are formatted when saved using [Prettier].
-Support for other ideas can be added.
+YAML, Markdown and JavaScript files are formatted when saved using [Prettier].
 
 ### Testing
 
@@ -35,6 +39,10 @@ The syntactical correctness of the YAML files is validated with
 This validates the YAML files against [Joi] schemata.
 
 _**MUDO:** A CI system should be set up._
+
+### IDE support
+
+This repository is set up for use in IntelliJ IDEAs. Support for other IDEs can be added.
 
 ## License
 
