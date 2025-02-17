@@ -21,6 +21,7 @@
   },
   "contributors": [],
   "license": "CC-BY-SA-4.0",
+  "type": "module",
   "devDependencies": {
     "depcheck": "^1.4.7",
     "joi": "^17.13.3",
