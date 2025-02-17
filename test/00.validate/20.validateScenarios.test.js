@@ -4,7 +4,7 @@ import { validateScenariosFile, Validation } from '../../lib/validate/validateSc
 import Joi from 'joi'
 import { readYaml } from '../../lib/validate/readYaml.js'
 
-const aYAMLPath = join(import.meta.dirname, '..', '..', 'scenarios', 'HTTP-JSON-Service.yaml')
+const aYAMLPath = join(import.meta.dirname, '..', '..', 'scenarios', 'HTTP-Service.yaml')
 const aWrongYAMLPath = join(import.meta.dirname, 'wrong.yaml')
 
 describe('validateScenarios', function () {

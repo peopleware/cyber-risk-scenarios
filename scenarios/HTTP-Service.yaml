@@ -1,0 +1,108 @@
+key: HTTP-JSON-Service
+name: HTTP JSON Service
+scope: >
+  An HTTP service is a cyber system that offers endpoints for interaction to clients over the HTTP protocol. It receives
+  HTTP requests, handles them, and sends HTTP responses.
+
+  The scope of the risk scenarios for an HTTP Service is code that is under our control, that runs on top of an [HTTP
+  Request Handling Stack](../doc/HTTPStack.md).
+
+  The _HTTP Request Handling Stack_ is the whole of hardware networking equipment, hardware computing devices, operating
+  system, hyper visor, VM, container, the configuration of all these components, such as firewall and port settings,
+  certificates, …,  that exposes an _HTTP Request Handling API_ to code under our control in the service. One example of
+  such an _HTTP Request Handling API_ is the API described for AWS Lambda functions invoked through an API Gateway
+  endpoint.
+
+  The _HTTP Request Handling Stack_, the entire internet on the other side of the _HTTP Request Handling Stack_, and the
+  HTTP Clients that initiate requests, are outside the scope of an HTTP Service these risk scenarios apply to.
+
+  Policies regarding the _HTTP Request Handling Stack_ must exist and be maintained as it and the societal context
+  evolves. The policies applicable to the _HTTP Request Handling Stack_ are described elsewhere, and should offer
+  reassurance that it preserves CIA&PP on its own, to offer reassurance that the whole cyber system preserves CIA&PP.
+
+  ## Offering Assistance
+
+  The risks of HTTP Clients are outside the scope of HTTP services.
+
+  In general, an HTTP Client executes in a more vulnerable environment that an HTTP service, and there are several ways
+  HTTP services an HTTP Client connects to can assist an HTTP Client in preserving CIA&PP. The policies of a resilient
+  HTTP Client might demand that it only connects to HTTP services that offer such assistance.
+
+  ## Other components
+
+  Note that an HTTP Service, in general, often also is a Client itself. The HTTP Service code often interacts with other
+  downstream components, over HTTP or other protocols. These components and the interactions, if they exist, must be
+  covered by additional risk scenarios.
+
+  Examples: HTTP Services that call other HTTP Services, or use a database for persistent storage.
+
+  ## Composition
+
+  The service might be realized by 1 component, or in a layered way, by several subcomponents, in different versions,
+  and one or more instances of subcomponents. Traditionally, a service is deployed as 1 or more instances of active
+  components that functionally handle HTTP requests, which might be instantiated dynamically to horizontally scale the
+  service, behind an API Gateway, or other load balancer. The components that make up the service communicate. Some of
+  the components that make up the service are services themselves. Other components might be persistent storage that is
+  communicated with using a protocol different from HTTP. Whether some of the components are considered part of the
+  service, or peers of the service, is an architectural choice of representation and management, and does not influence
+  the governance of the risks of the whole.
+
+  If the architecture is layered, these risk scenarios apply to each HTTP service at every layer.
+
+  The risk scenarios described here concern the behavior of the HTTP service as a whole. The CIA&PP of the whole is the
+  CIA&PP of the API, the CIA&PP of each component, and the CIA&PP of all communications. They consider the HTTP service
+  to be a black box, and are not concerned with how the behavior is realized. The internal structure and realization of
+  the behavior can evolve over time without changes to the external visible behavior, so that different realizations
+  must adhere to unchanged policies. The risk assesment and verification of compliance with the policies therefor should
+  happen and be repeated for the HTTP service as the whole, considering it a black box.
+
+  ## Structure
+
+  The HTTP Semantics are defined in function of _resources_, identified by URIs. The outside world can interact with an
+  HTTP Service by initiating an _action_ on a resource (a.k.a. HTTP methods) as an HTTP request.
+
+  An HTTP request is a communication initiated by a client over the network targeted at the HTTP service, given a
+  specific URL, a specific method, meta-data in the HTTP header, and optionally a body.
+scenarios:
+  - key: MissingAuthorization
+    scenario:
+      A resource action of the service that requires specific privileges, to retrieve, create, or alter data, is used
+      without any authorization.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Privacy
+      ISO27001A:
+        - '8.2'
+        - '8.3'
+        - '8.5'
+      stride:
+        - Tampering
+        - Repudiation
+        - Information disclosure
+        - Elevation of privilege
+      linddun:
+        - Data Disclosure
+        - Non-compliance
+  - key: UnauthorizedAccess
+    scenario:
+      A resource action of the service that requires specific privileges, to retrieve, create, or alter data, is used
+      without proper authorization.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Privacy
+      ISO27001A:
+        - '8.2'
+        - '8.3'
+        - '8.5'
+      stride:
+        - Tampering
+        - Repudiation
+        - Information disclosure
+        - Elevation of privilege
+      linddun:
+        - Data Disclosure
+        - Non-compliance

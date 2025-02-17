@@ -2,7 +2,7 @@ import { inspect } from 'node:util'
 import { join } from 'node:path'
 import { readYaml } from '../../lib/validate/readYaml.js'
 
-const aYAMLPath = join(import.meta.dirname, '..', '..', 'scenarios', 'HTTP-JSON-Service.yaml')
+const aYAMLPath = join(import.meta.dirname, '..', '..', 'scenarios', 'HTTP-Service.yaml')
 
 describe('readYaml', function () {
   it('reads a YAML file', async function () {
