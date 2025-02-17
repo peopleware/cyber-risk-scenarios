@@ -25,6 +25,7 @@
   "devDependencies": {
     "@ppwcode/mocha-ssst": "^1.0.2",
     "depcheck": "^1.4.7",
+    "directory-tree": "^3.5.2",
     "joi": "^17.13.3",
     "js-yaml": "^4.1.0",
     "mocha": "^11.1.0",
