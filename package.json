@@ -23,6 +23,7 @@
   "license": "CC-BY-SA-4.0",
   "type": "module",
   "devDependencies": {
+    "@ppwcode/mocha-ssst": "^1.0.2",
     "depcheck": "^1.4.7",
     "joi": "^17.13.3",
     "js-yaml": "^4.1.0",
@@ -49,10 +50,13 @@
     "extension": "test.js",
     "require": [
       "should"
+    ],
+    "reporter": [
+      "@ppwcode/mocha-ssst"
     ]
   },
   "scripts": {
     "status": "depcheck; retire; ncu; npm audit --registry=https://registry.npmjs.org || exit 0",
-    "test": "TODO"
+    "test": "mocha \"test/{*,**/*}.test.js\""
   }
 }
