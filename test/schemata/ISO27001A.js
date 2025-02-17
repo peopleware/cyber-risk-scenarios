@@ -30,7 +30,13 @@ export const { values: ISO27001A7PhysicalControlsValues, schema: ISO27001A7Physi
 export const { values: ISO27001A8TechnologicalControlsValues, schema: ISO27001A8TechnologicalControls } =
   buildValuesAndSchema('8', 34)
 
+/**
+ * @type {string[]}
+ */
 export const ISO27001AControlsValues = ISO27001A5OrganizationalControlsValues.concat(ISO27001A6PeopleControlsValues)
   .concat(ISO27001A7PhysicalControlsValues)
   .concat(ISO27001A8TechnologicalControlsValues)
+/**
+ * @type {Joi.StringSchema<string>}
+ */
 export const ISO27001AControls = string().valid(...ISO27001AControlsValues)
