@@ -7,6 +7,7 @@ scenarios:
       A resource action of the service that requires specific privileges, to retrieve, create, or alter data, is used
       without any authorization.
     references:
+      violates: 43
       ISO27001A:
         - '13.2'
         - '8.3'

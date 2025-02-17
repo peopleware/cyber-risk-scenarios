@@ -7,6 +7,10 @@ scenarios:
       A resource action of the service that requires specific privileges, to retrieve, create, or alter data, is used
       without any authorization.
     references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Privacy
       ISO27001A:
         - '8.2'
         - '8.3'
@@ -24,6 +28,10 @@ scenarios:
       A resource action of the service that requires specific privileges, to retrieve, create, or alter data, is used
       without proper authorization.
     references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Privacy
       ISO27001A:
         - '8.2'
         - '8.3'
