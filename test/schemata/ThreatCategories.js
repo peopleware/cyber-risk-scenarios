@@ -1,7 +1,6 @@
-// STRIDE
-
 import { string } from 'joi'
-import { ISO27001A5OrganizationalControlsValues } from './ISO27001A.js'
+
+// STRIDE
 
 /**
  * @type {string[]}
@@ -18,7 +17,7 @@ export const STRIDEValues = [
 /**
  * @type {Joi.StringSchema<string>}
  */
-const STRIDE = string().valid(...STRIDEValues)
+export const STRIDE = string().valid(...STRIDEValues)
 
 // LINDDUN
 
@@ -38,14 +37,4 @@ export const LINDDUNValues = [
 /**
  * @type {Joi.StringSchema<string>}
  */
-const LINDDUN = string().valid(...LINDDUNValues)
-
-/**
- * @type {string[]}
- */
-export const threatCategoriesValues = STRIDEValues.concat(LINDDUNValues)
-
-/**
- * @type {Joi.StringSchema<string>}
- */
-export const ThreatCategories = string().valid(...threatCategoriesValues)
+export const LINDDUN = string().valid(...LINDDUNValues)
