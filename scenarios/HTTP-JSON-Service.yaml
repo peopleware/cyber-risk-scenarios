@@ -7,8 +7,10 @@ scenarios:
       A resource action of the service that requires specific privileges, to retrieve, create, or alter data, is used
       without any authorization.
     references:
-      ISO27001:
-        - LALA
+      ISO27001A:
+        - '8.2'
+        - '8.3'
+        - '8.5'
       stride:
         - Tampering
         - Repudiation
@@ -22,8 +24,10 @@ scenarios:
       A resource action of the service that requires specific privileges, to retrieve, create, or alter data, is used
       without proper authorization.
     references:
-      ISO27001:
-        - LALA
+      ISO27001A:
+        - '8.2'
+        - '8.3'
+        - '8.5'
       stride:
         - Tampering
         - Repudiation
