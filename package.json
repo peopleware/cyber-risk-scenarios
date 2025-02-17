@@ -27,12 +27,14 @@
     "depcheck": "^1.4.7",
     "directory-tree": "^3.5.2",
     "joi": "^17.13.3",
+    "joi-to-json": "^4.3.1",
     "js-yaml": "^4.1.0",
     "mocha": "^11.1.0",
     "npm-check-updates": "^17.1.14",
     "prettier": "^3.5.1",
     "retire": "^5.2.5",
-    "should": "^13.2.3"
+    "should": "^13.2.3",
+    "write-json-file": "^6.0.0"
   },
   "prettier": {
     "printWidth": 120,
