@@ -59,6 +59,7 @@
     ]
   },
   "scripts": {
+    "postinstall": "node ./scripts/createRiskScenariosJSONSchema.js",
     "status": "depcheck; retire; ncu; npm audit --registry=https://registry.npmjs.org || exit 0",
     "test": "mocha \"test/{*,**/*}.test.js\""
   }
