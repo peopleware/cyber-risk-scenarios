@@ -1,5 +1,5 @@
-key: HTTP-JSON-Service
-name: HTTP JSON Service
+key: HTTP-Service
+name: HTTP Service
 scope: >
   An HTTP service is a cyber system that offers endpoints for interaction to clients over the HTTP protocol. It receives
   HTTP requests, handles them, and sends HTTP responses.
