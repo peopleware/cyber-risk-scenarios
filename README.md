@@ -6,7 +6,7 @@ assess the impact and the likelihood of the scenario occurring.
 The risk scenarios are focussed on a specific type of component of cyber systems. A cyber system as a whole combines
 instances of different types. The risk scenarios, and types of components covered are expected to evolve. When scenarios
 are proposed that are only applicable to some subtypes of a type of component, separate lists for the subtypes will be
-created.
+created. More detail can be found in “[Context]”.
 
 Risk scenarios are described in YAML files, with references to the topics they cover in standards.
 
@@ -48,6 +48,7 @@ This repository is set up for use in IntelliJ IDEAs. Support for other IDEs can 
 
 Cyber Risk Scenarios © 2025 by Jan Dockx, PeopleWare n.v. is licensed under [CC BY-SA 4.0].
 
+[Context]: doc/index.md
 [prettier]: https://www.npmjs.com/package/prettier
 [joi]: https://joi.dev/
 [CC BY-SA 4.0]: https://creativecommons.org/licenses/by-sa/4.0/
