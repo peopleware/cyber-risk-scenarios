@@ -25,9 +25,12 @@
   "devDependencies": {
     "depcheck": "^1.4.7",
     "joi": "^17.13.3",
+    "js-yaml": "^4.1.0",
+    "mocha": "^11.1.0",
     "npm-check-updates": "^17.1.14",
     "prettier": "^3.5.1",
-    "retire": "^5.2.5"
+    "retire": "^5.2.5",
+    "should": "^13.2.3"
   },
   "prettier": {
     "printWidth": 120,
@@ -37,6 +40,16 @@
     "semi": false,
     "singleQuote": true,
     "trailingComma": "none"
+  },
+  "mocha": {
+    "check-leaks": true,
+    "forbid-only": true,
+    "forbid-pending": true,
+    "recursive": true,
+    "extension": "test.js",
+    "require": [
+      "should"
+    ]
   },
   "scripts": {
     "status": "depcheck; retire; ncu; npm audit --registry=https://registry.npmjs.org || exit 0",
