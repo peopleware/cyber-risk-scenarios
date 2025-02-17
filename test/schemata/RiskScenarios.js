@@ -13,6 +13,7 @@ export const RiskScenario = object({
 })
 
 export const RiskScenarios = object({
+  key: string().required(),
   name: string().required(),
   scope: string().required(),
   scenarios: array().items(RiskScenario.required()).required()
