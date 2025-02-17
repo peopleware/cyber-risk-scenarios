@@ -23,6 +23,7 @@
   "license": "CC-BY-SA-4.0",
   "devDependencies": {
     "depcheck": "^1.4.7",
+    "joi": "^17.13.3",
     "npm-check-updates": "^17.1.14",
     "prettier": "^3.5.1",
     "retire": "^5.2.5"
