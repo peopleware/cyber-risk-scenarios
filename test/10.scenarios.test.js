@@ -8,19 +8,25 @@ const scenariosPath = join(import.meta.dirname, '..', 'scenarios')
 /**
  * @param {string} path
  * @param {TRiskScenarios} riskScenarios
- * @returns {Promise<Awaited<boolean>[]>}
+ * @returns {Promise<Awaited<boolean>>}
  */
 async function extendsEntriesExist(path, riskScenarios) {
   if (!('extends' in riskScenarios)) {
     return true
   }
 
-  return Promise.all(
-    riskScenarios.extends.map(extendsPath => {
+  const determinations = await Promise.all(
+    riskScenarios.extends.map(async extendsPath => {
       const fullPath = join(path, extendsPath)
-      return fileExists(fullPath)
+      const exists = await fileExists(fullPath)
+      if (!exists) {
+        console.error(`\`${path}\`: \`${fullPath}\` does not exist`)
+      }
+      return exists
     })
   )
+
+  return determinations.every(d => d)
 }
 
 function createTestsForScenariosFile(node) {
