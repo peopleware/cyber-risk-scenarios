@@ -1,5 +1,8 @@
 key: HTTP-JSON-Service
 name: HTTP JSON Service
+extends:
+  - ../a/yaml.file.yaml
+  - not/a/yaml.file
 scope: MUDO describe the scope of these risk scenarios in detail
 scenarios:
   - key: MissingAuthorization

@@ -25,7 +25,7 @@ describe('validateScenarios', function () {
       Joi.assert(result, Validation)
       result.path.should.equal(aWrongYAMLPath)
       result.should.have.property('errorDescription')
-      result.errorDescription.length.should.equal(7)
+      result.errorDescription.length.should.equal(8)
       const scenariosFromFile = await readYaml(aWrongYAMLPath)
       result.content.should.deepEqual(scenariosFromFile)
     })
