@@ -1,0 +1,41 @@
+key: HTTP-RA-JSON-Response
+name: HTTP Service Resource Action with a JSON Response
+extends:
+  - ../HTTP-Service.yaml
+scope: >
+  Resource Actions in an HTTP service that are supposed to return a JSON response with a specified status code. These
+  response should have a header `Content-Type: application/json` with status code `2xx`, and `Content-Type:
+  application/problem+json` with status code `4xx` ([RFC 9457](https://datatracker.ietf.org/doc/html/rfc9457)).
+scenarios:
+  - key: InvalidJSONBody
+    scenario:
+      A resource action of the service that intends to return a JSON body with a specified status code returns a body
+      that is not valid JSON.
+    references:
+      violates:
+        - Availability
+      ISO27001A: []
+      stride: []
+      linddun: []
+  - key: InvalidJSONBodyWithLeakage
+    scenario:
+      A resource action of the service that intends to return a JSON body with a specified status code returns a body
+      that is not valid JSON, but text that contains confidential data or PII the requesting party is not authorized to
+      have access to.
+    references:
+      violates:
+        - Availability
+        - Confidentiality
+        - Privacy
+      ISO27001A:
+        - '8.1'
+        - '8.2'
+        - '8.3'
+      stride:
+        - Information disclosure
+        - Elevation of privilege
+      linddun:
+        - Data Disclosure
+        - Linking
+        - Non-compliance
+        - Unawareness
