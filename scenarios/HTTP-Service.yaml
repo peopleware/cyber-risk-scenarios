@@ -199,7 +199,7 @@ scenarios:
         - Data Disclosure
         - Unawareness
         - Non-compliance
-  - key: k5
+  - key: k5 # MUDO change keys to meaningful names
     scenario: >-
       A resource action of the service that requires authentication, to retrieve, create, or alter data, is used by a
       party with another identity than assigned to them.
