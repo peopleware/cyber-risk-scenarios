@@ -53,8 +53,8 @@ scope: >
   CIA&PP of the API, the CIA&PP of each component, and the CIA&PP of all communications. They consider the HTTP service
   to be a black box, and are not concerned with how the behavior is realized. The internal structure and realization of
   the behavior can evolve over time without changes to the external visible behavior, so that different realizations
-  must adhere to unchanged policies. The risk assesment and verification of compliance with the policies therefor should
-  happen and be repeated for the HTTP service as the whole, considering it a black box.
+  must adhere to unchanged policies. The risk assessment and verification of compliance with the policies therefor
+  should happen and be repeated for the HTTP service as the whole, considering it a black box.
 
   ## Structure
 
@@ -242,7 +242,7 @@ scenarios:
     scenario: >-
       A party that is not authorized to do so creates a new identity that enables access to the service, or changes an
       existing identity so that other parties then the intended party can authenticate as that identity, or changes
-      priviliges of an existing identity.
+      privileges of an existing identity.
     references:
       violates:
         - Confidentiality
@@ -279,8 +279,8 @@ scenarios:
         - Non-compliance
   - key: k7
     scenario: >-
-      A resource action of the service to create, or alter data, does not register correctly which party made the change
-      at which time.
+      A resource action of the service to create, or alter data, does not register correctly what party made the change
+      at what time.
     references:
       violates:
         - Integrity
@@ -299,7 +299,7 @@ scenarios:
         - Non-compliance
   - key: k8
     scenario: >-
-      A resource action of the service to create, or alter data, does register which person made the change, breaking
+      A resource action of the service to create, or alter data, does register what person made the change, breaking
       non-repudiation.
     references:
       violates:
@@ -336,8 +336,8 @@ scenarios:
         - Non-compliance
   - key: k10
     scenario: >-
-      A resource action of the service to retrieve data, does not register correctly which party retrieved the
-      information at which time.
+      A resource action of the service to retrieve data, does not register correctly what party retrieved the
+      information at what time.
     references:
       violates:
         - Confidentiality
@@ -358,7 +358,7 @@ scenarios:
   - key: k11
     scenario: >-
       A resource action returns a nominal or exceptional response in an unspecified or incorrect format (which thus is
-      not expected by clients).
+      unexpected by clients).
     references:
       violates:
         - Availability
@@ -430,7 +430,7 @@ scenarios:
         - Non-compliance
   - key: k15
     scenario: >-
-      A resource action accepts information or meta-information in an incomming request that is in an unspecified or
+      A resource action accepts information or meta-information in an incoming request that is in an unspecified or
       incorrect format (so that it is unspecified what will happen).
     references:
       violates:
