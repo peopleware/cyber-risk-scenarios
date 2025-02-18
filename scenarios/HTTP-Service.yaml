@@ -64,8 +64,54 @@ scope: >
   An HTTP request is a communication initiated by a client over the network targeted at the HTTP service, given a
   specific URL, a specific method, meta-data in the HTTP header, and optionally a body.
 scenarios:
-  - key: MissingAuthorization
-    scenario:
+  - key: MissingAuthN
+    scenario: >-
+      A resource action of the service that requires specific privileges, to retrieve, create, or alter data, is used
+      without any authentication.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Privacy
+      ISO27001A:
+        - '5.12'
+        - '5.13'
+        - '5.15'
+        - '5.16'
+        - '5.17'
+        - '5.18'
+        - '8.29'
+        - '5.24'
+        - '5.25'
+        - '5.26'
+        - '5.27'
+        - '5.29'
+        - '5.28'
+        - '5.30'
+        - '5.33'
+        - '5.34'
+        - '8.1'
+        - '8.2'
+        - '8.3'
+        - '8.5'
+        - '8.12'
+        - '8.25'
+        - '8.26'
+        - '8.27'
+        - '8.28'
+      stride:
+        - Tampering
+        - Repudiation
+        - Information disclosure
+        - Elevation of privilege
+      linddun:
+        - Identifying
+        - Non-repudiation
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: MissingAuthZ
+    scenario: >-
       A resource action of the service that requires specific privileges, to retrieve, create, or alter data, is used
       without any authorization.
     references:
@@ -74,19 +120,43 @@ scenarios:
         - Integrity
         - Privacy
       ISO27001A:
+        - '5.12'
+        - '5.13'
+        - '5.15'
+        - '5.16'
+        - '5.17'
+        - '5.18'
+        - '5.24'
+        - '5.25'
+        - '5.26'
+        - '5.27'
+        - '5.29'
+        - '5.28'
+        - '5.30'
+        - '5.33'
+        - '5.34'
+        - '8.1'
         - '8.2'
         - '8.3'
         - '8.5'
+        - '8.12'
+        - '8.25'
+        - '8.26'
+        - '8.27'
+        - '8.28'
       stride:
         - Tampering
         - Repudiation
         - Information disclosure
         - Elevation of privilege
       linddun:
+        - Identifying
+        - Non-repudiation
         - Data Disclosure
+        - Unawareness
         - Non-compliance
-  - key: UnauthorizedAccess
-    scenario:
+  - key: WrongAuthZ
+    scenario: >-
       A resource action of the service that requires specific privileges, to retrieve, create, or alter data, is used
       without proper authorization.
     references:
@@ -95,14 +165,781 @@ scenarios:
         - Integrity
         - Privacy
       ISO27001A:
+        - '5.12'
+        - '5.13'
+        - '5.15'
+        - '5.16'
+        - '5.17'
+        - '5.18'
+        - '5.24'
+        - '5.25'
+        - '5.26'
+        - '5.27'
+        - '5.29'
+        - '5.28'
+        - '5.30'
+        - '5.33'
+        - '5.34'
+        - '8.1'
         - '8.2'
         - '8.3'
         - '8.5'
+        - '8.12'
+        - '8.25'
+        - '8.26'
+        - '8.27'
+        - '8.28'
       stride:
         - Tampering
         - Repudiation
         - Information disclosure
         - Elevation of privilege
       linddun:
+        - Identifying
         - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k5
+    scenario: >-
+      A resource action of the service that requires authentication, to retrieve, create, or alter data, is used by a
+      party with another identity than assigned to them.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Privacy
+      ISO27001A:
+        - '5.16'
+        - '5.17'
+        - '5.24'
+        - '5.25'
+        - '5.26'
+        - '5.27'
+        - '5.29'
+        - '5.28'
+        - '5.30'
+        - '5.33'
+        - '5.34'
+        - '8.1'
+        - '8.2'
+        - '8.3'
+        - '8.5'
+        - '8.12'
+        - '8.25'
+        - '8.26'
+        - '8.27'
+        - '8.28'
+      stride:
+        - Spoofing
+        - Repudiation
+      linddun:
+        - Identifying
+        - Non-repudiation
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k6
+    scenario: >-
+      A party that is not authorized to do so creates a new identity that enables access to the service, or changes an
+      existing identity so that other parties then the intended party can authenticate as that identity, or changes
+      priviliges of an existing identity.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Availability
+        - Privacy
+      ISO27001A:
+        - '5.16'
+        - '5.17'
+        - '5.24'
+        - '5.25'
+        - '5.26'
+        - '5.27'
+        - '5.29'
+        - '5.28'
+        - '5.30'
+        - '5.33'
+        - '5.34'
+        - '8.1'
+        - '8.2'
+        - '8.3'
+        - '8.5'
+        - '8.12'
+        - '8.25'
+        - '8.26'
+        - '8.27'
+        - '8.28'
+      stride:
+        - Elevation of privilege
+      linddun:
+        - Non-repudiation
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k7
+    scenario: >-
+      A resource action of the service to create, or alter data, does not register correctly which party made the change
+      at which time.
+    references:
+      violates:
+        - Integrity
+        - Privacy
+      ISO27001A:
+        - '5.28'
+        - '5.33'
+        - '5.34'
+        - '8.15'
+        - '8.25'
+        - '8.26'
+        - '8.28'
+      stride:
+        - Repudiation
+      linddun:
+        - Non-compliance
+  - key: k8
+    scenario: >-
+      A resource action of the service to create, or alter data, does register which person made the change, breaking
+      non-repudiation.
+    references:
+      violates:
+        - Privacy
+      ISO27001A:
+        - '5.34'
+        - '8.15'
+        - '8.25'
+        - '8.26'
+        - '8.28'
+      stride: []
+      linddun:
+        - Non-repudiation
+        - Non-compliance
+  - key: k9
+    scenario: >-
+      A resource action of the service to create, or alter data, does not register correctly what was changed.
+    references:
+      violates:
+        - Integrity
+        - Privacy
+      ISO27001A:
+        - '5.28'
+        - '5.33'
+        - '5.34'
+        - '8.15'
+        - '8.25'
+        - '8.26'
+        - '8.28'
+      stride:
+        - Repudiation
+      linddun:
+        - Unawareness
+        - Non-compliance
+  - key: k10
+    scenario: >-
+      A resource action of the service to retrieve data, does not register correctly which party retrieved the
+      information at which time.
+    references:
+      violates:
+        - Confidentiality
+        - Privacy
+      ISO27001A:
+        - '5.28'
+        - '5.33'
+        - '5.34'
+        - '8.15'
+        - '8.25'
+        - '8.26'
+        - '8.28'
+      stride:
+        - Information disclosure
+      linddun:
+        - Unawareness
+        - Non-compliance
+  - key: k11
+    scenario: >-
+      A resource action returns a nominal or exceptional response in an unspecified or incorrect format (which thus is
+      not expected by clients).
+    references:
+      violates:
+        - Availability
+      ISO27001A:
+        - '8.15'
+        - '8.25'
+        - '8.26'
+        - '8.28'
+      stride: []
+      linddun: []
+  - key: k12
+    scenario: A resource action returns a nominal response with incorrect data.
+    references:
+      violates:
+        - Integrity
+      ISO27001A:
+        - '5.33'
+        - '5.34'
+        - '8.15'
+        - '8.25'
+        - '8.26'
+        - '8.28'
+      stride: []
+      linddun:
+        - Unawareness
+        - Non-compliance
+  - key: k13
+    scenario: >-
+      A resource action returns a nominal response with data that should not be exposed to the authorized party that
+      made the request.
+    references:
+      violates:
+        - Confidentiality
+        - Privacy
+      ISO27001A:
+        - '5.33'
+        - '5.34'
+        - '8.12'
+      stride:
+        - Information disclosure
+      linddun:
+        - Linking
+        - Identifying
+        - Non-repudiation
+        - Detecting
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k14
+    scenario: >-
+      A resource action returns information or meta–information that was not specified (and thus was not reasoned about
+      whether this is appropriate).
+    references:
+      violates:
+        - Confidentiality
+        - Privacy
+      ISO27001A:
+        - '5.33'
+        - '5.34'
+        - '8.12'
+      stride:
+        - Information disclosure
+      linddun:
+        - Linking
+        - Identifying
+        - Detecting
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k15
+    scenario: >-
+      A resource action accepts information or meta-information in an incomming request that is in an unspecified or
+      incorrect format (so that it is unspecified what will happen).
+    references:
+      violates:
+        - Integrity
+        - Privacy
+      ISO27001A:
+        - '5.33'
+        - '5.34'
+        - '8.15'
+        - '8.25'
+        - '8.26'
+        - '8.28'
+      stride:
+        - Tampering
+      linddun:
+        - Non-compliance
+  - key: k16
+    scenario: >-
+      A resource action nominally handles a request that creates or changes data that violates domain constraints (e.g.,
+      a date of death in the future, a reference to a resource that does not exist, a deletion of a resource that is
+      referenced by a still existing resource, …).
+    references:
+      violates:
+        - Integrity
+      ISO27001A:
+        - '5.33'
+        - '5.34'
+        - '8.15'
+        - '8.25'
+        - '8.26'
+        - '8.28'
+      stride:
+        - Repudiation
+        - Information disclosure
+      linddun:
+        - Non-compliance
+  - key: k17
+    scenario: >-
+      A resource action that creates or changes data returns nominally before the data is validated, or the impact on
+      domain constraint is verified, or before the change is persisted.
+    references:
+      violates:
+        - Integrity
+      ISO27001A:
+        - '5.33'
+        - '5.34'
+        - '8.15'
+        - '8.25'
+        - '8.26'
+        - '8.28'
+      stride:
+        - Repudiation
+        - Information disclosure
+      linddun:
+        - Non-compliance
+  - key: k18
+    scenario: A resource action fails, and is difficult or impossible to diagnose why.
+    references:
+      violates:
+        - Integrity
+        - Availability
+      ISO27001A:
+        - '5.33'
+        - '5.34'
+        - '8.15'
+      stride: []
+      linddun:
+        - Non-compliance
+  - key: k19
+    scenario: A resource action crashes with unknown persistent side effects.
+    references:
+      violates:
+        - Integrity
+        - Availability
+      ISO27001A:
+        - '5.33'
+        - '5.34'
+        - '5.28'
+        - '8.15'
+      stride:
+        - Spoofing
+        - Tampering
+        - Repudiation
+        - Information disclosure
+        - Denial of service
+        - Elevation of privilege
+      linddun:
+        - Linking
+        - Identifying
+        - Non-repudiation
+        - Detecting
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k20
+    scenario: >-
+      A resource action leaks information that helps attackers when it ends non-nominally, or fails.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Availability
+        - Privacy
+      ISO27001A:
+        - '5.33'
+        - '5.34'
+        - '8.12'
+      stride:
+        - Information disclosure
+        - Elevation of privilege
+      linddun:
+        - Non-compliance
+  - key: k21
+    scenario: A resource action is very resource-intensive (CPU, memory, …).
+    references:
+      violates:
+        - Availability
+      ISO27001A:
+        - '8.6'
+      stride:
+        - Denial of service
+      linddun: []
+  - key: k22
+    scenario: >-
+      A resource action of the service can be interacted with over a non-secure transport channel.
+    references:
+      violates:
+        - Confidentiality
+        - Privacy
+      ISO27001A:
+        - '5.14'
+        - '5.33'
+        - '5.34'
+        - '8.9'
+        - '8.24'
+      stride:
+        - Spoofing
+        - Information disclosure
+      linddun:
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k23
+    scenario: >-
+      The intended transport security to interact with a resource action of the service is circumvented.
+    references:
+      violates:
+        - Confidentiality
+        - Privacy
+      ISO27001A:
+        - '5.14'
+        - '5.33'
+        - '5.34'
+        - '8.9'
+        - '8.24'
+      stride:
+        - Spoofing
+        - Information disclosure
+      linddun:
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k24
+    scenario: >-
+      The intended trusted chain of transport security to interact with a resource action is broken.
+    references:
+      violates:
+        - Confidentiality
+        - Privacy
+      ISO27001A:
+        - '5.14'
+        - '5.33'
+        - '5.34'
+        - '8.9'
+        - '8.24'
+      stride:
+        - Spoofing
+        - Information disclosure
+      linddun:
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k25
+    scenario: The service is available from anywhere on the internet.
+    references:
+      violates:
+        - Confidentiality
+        - Privacy
+      ISO27001A:
+        - '5.33'
+        - '5.34'
+        - '8.12'
+      stride:
+        - Information disclosure
+      linddun:
+        - Identifying
+        - Data Disclosure
+        - Non-compliance
+  - key: k26
+    scenario: >-
+      A different (later) version or configuration of the service is used than the one that is evaluated here.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Availability
+        - Privacy
+      ISO27001A:
+        - '5.28'
+        - '5.33'
+        - '5.34'
+        - '8.9'
+        - '8.32'
+      stride:
+        - Spoofing
+        - Tampering
+        - Repudiation
+        - Information disclosure
+        - Denial of service
+        - Elevation of privilege
+      linddun:
+        - Linking
+        - Identifying
+        - Non-repudiation
+        - Detecting
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k27
+    scenario: >-
+      The installed cybersystem fails, and the active components cannot be deployed on a replacement system (because the
+      executables cannot be retrieved, or rebuild, or because of incompatibilities).
+    references:
+      violates: []
+      ISO27001A:
+        - '8.25'
+        - '8.26'
+        - '8.27'
+        - '8.28'
+      stride: []
+      linddun: []
+  - key: k28
+    scenario: The source code of the active components leaks to an unauthorized party.
+    references:
+      violates:
+        - Confidentiality
+      ISO27001A:
+        - '5.28'
+        - '5.32'
+        - '5.33'
+        - '5.34'
+        - '8.4'
+        - '8.25'
+        - '8.26'
+        - '8.27'
+        - '8.28'
+      stride:
+        - Information disclosure
+      linddun: []
+  - key: k29
+    scenario: >-
+      The source code of the active components leaks to an unauthorized party, who exploits a vulnerability of the cyber
+      system they found after analysing the source code.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Availability
+        - Privacy
+      ISO27001A:
+        - '5.28'
+        - '5.33'
+        - '5.34'
+        - '8.4'
+        - '8.25'
+        - '8.26'
+        - '8.27'
+        - '8.28'
+      stride:
+        - Spoofing
+        - Tampering
+        - Repudiation
+        - Information disclosure
+        - Denial of service
+        - Elevation of privilege
+      linddun:
+        - Linking
+        - Identifying
+        - Non-repudiation
+        - Detecting
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k30
+    scenario: >-
+      The source code of the active components is changed by an unauthorized party.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Availability
+        - Privacy
+      ISO27001A:
+        - '5.28'
+        - '5.33'
+        - '5.34'
+        - '8.4'
+      stride:
+        - Spoofing
+        - Tampering
+        - Repudiation
+        - Information disclosure
+        - Denial of service
+        - Elevation of privilege
+      linddun:
+        - Linking
+        - Identifying
+        - Non-repudiation
+        - Detecting
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k31
+    scenario: >-
+      An unauthorized party retrieves, creates, or changes data by exploiting a publicly known vulnerability in one of
+      the dependencies used in the cyber system we are aware of.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Privacy
+      ISO27001A:
+        - '5.19'
+        - '5.20'
+        - '5.21'
+        - '5.22'
+        - '5.28'
+        - '5.33'
+        - '5.34'
+        - '8.4'
+        - '8.8'
+        - '8.25'
+        - '8.26'
+        - '8.27'
+        - '8.28'
+      stride:
+        - Tampering
+        - Repudiation
+        - Information disclosure
+        - Elevation of privilege
+      linddun:
+        - Linking
+        - Identifying
+        - Detecting
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k32
+    scenario: >-
+      An unauthorized party retrieves, creates, or changes data by exploiting a publicly known vulnerability in the
+      underlying stack the service is deployed on we are aware of.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Privacy
+      ISO27001A:
+        - '5.19'
+        - '5.20'
+        - '5.21'
+        - '5.22'
+        - '5.28'
+        - '5.33'
+        - '5.34'
+        - '8.4'
+        - '8.8'
+      stride:
+        - Tampering
+        - Repudiation
+        - Information disclosure
+        - Elevation of privilege
+      linddun:
+        - Linking
+        - Identifying
+        - Detecting
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k33
+    scenario: >-
+      An unauthorized party retrieves, creates, or changes data by exploiting a publicly known vulnerability in one of
+      the dependencies used in the cyber system we are unaware of.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Privacy
+      ISO27001A:
+        - '5.19'
+        - '5.20'
+        - '5.21'
+        - '5.22'
+        - '5.28'
+        - '5.33'
+        - '5.34'
+        - '8.4'
+        - '8.8'
+        - '8.25'
+        - '8.26'
+        - '8.27'
+        - '8.28'
+      stride:
+        - Tampering
+        - Repudiation
+        - Information disclosure
+        - Elevation of privilege
+      linddun:
+        - Linking
+        - Identifying
+        - Detecting
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k34
+    scenario: >-
+      An unauthorized party retrieves, creates, or changes data by exploiting a publicly known vulnerability in the
+      underlying stack the service is deployed on we are unaware of.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Privacy
+      ISO27001A:
+        - '5.19'
+        - '5.20'
+        - '5.21'
+        - '5.22'
+        - '5.28'
+        - '5.33'
+        - '5.34'
+        - '8.4'
+        - '8.8'
+      stride:
+        - Tampering
+        - Repudiation
+        - Information disclosure
+        - Elevation of privilege
+      linddun:
+        - Linking
+        - Identifying
+        - Detecting
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k35
+    scenario: >-
+      An unauthorized party retrieves, creates, or changes data by exploiting a publicly unknown vulnerability in one of
+      the dependencies used in the cyber system.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Privacy
+      ISO27001A:
+        - '5.24'
+        - '5.25'
+        - '5.26'
+        - '5.27'
+        - '5.28'
+        - '5.29'
+        - '5.30'
+      stride:
+        - Tampering
+        - Repudiation
+        - Information disclosure
+        - Elevation of privilege
+      linddun:
+        - Linking
+        - Identifying
+        - Detecting
+        - Data Disclosure
+        - Unawareness
+        - Non-compliance
+  - key: k36
+    scenario: >-
+      An unauthorized party retrieves, creates, or changes data by exploiting a publicly unknown vulnerability in the
+      underlying stack the service is deployed on.
+    references:
+      violates:
+        - Confidentiality
+        - Integrity
+        - Privacy
+      ISO27001A:
+        - '5.24'
+        - '5.25'
+        - '5.26'
+        - '5.27'
+        - '5.28'
+        - '5.29'
+        - '5.30'
+      stride:
+        - Tampering
+        - Repudiation
+        - Information disclosure
+        - Elevation of privilege
+      linddun:
+        - Linking
+        - Identifying
+        - Detecting
+        - Data Disclosure
+        - Unawareness
         - Non-compliance
