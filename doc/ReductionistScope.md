@@ -23,5 +23,15 @@ Confidentiality, Integrity, Availability, and Privacy Preservation is considered
 that makes up a cyber system, the Confidentiality, Integrity, Availability, and Privacy Preservation of the cyber system
 as a whole is completely considered, recursively.
 
+> MUDO: What to do when a component is in general low risk, apart from a small part, that has higher risk?
+>
+> It is very hard, probably impossible, to only apply mitigations to a small part of a component. When a small part of a
+> component carries a higher risk, the entire component carries the risk, and mitigations apply to the entire component
+> as a whole. The component is the smallest unit. When we consider the extra cost of this and find it too high, a viable
+> alternative approach is to split of the small part into a separate component and to apply more stringent mitigations
+> to that separated, small component. This is a new reason in an architecture to split of a component. The extra cost of
+> the split must be compared to the extra cost of applying the more stringent mitigations to the whole original
+> component.
+
 [Interacting and nested components and cyber systems]:
   Interacting%20and%20nested%20components%20and%20cyber%20systems.png
